@@ -1,0 +1,256 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url('../img/geometry2.png');
+    /* Background pattern from Subtle Patterns */
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-weight: 300;
+    font-size: 35px;
+    color: orange;
+}
+
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+    /** 3D Effict **/
+    perspective: 10000px;
+}
+
+.deck .card {
+    height: 125px;
+    width: 125px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    position: relative;
+    transform: scale(1);
+    /** 3D Effict**/
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+
+
+/*
+ * Styles for the cards classes
+ *
+ * Yoyo is the name of the monkey boy
+ * and Cici is the name of the monkey girl
+ * From  https://tenor.com/search/yoyo-monkey-gif-gifs
+ */
+
+.deck .card:active {
+    transform: scale(.97);
+    transition: transform.2s;
+}
+
+.deck .card.open {
+    transform: rotateY(180deg);
+    cursor: default;
+}
+
+.deck .card.show {
+    font-size: 33px;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #02ccba;
+    font-size: 33px;
+}
+
+img {
+    height: 125px;
+    width: 125px;
+    border-radius: 8px;
+}
+
+.front-face,
+.back-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front-face {
+    transform: rotateY(180deg);
+}
+
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    color: rebeccapurple;
+    font-size: 33px;
+    text-align: left;
+    width: 660px;
+    margin-bottom: 10px;
+}
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+    color: orange;
+    list-style: none;
+    display: inline-block;
+}
+
+.score-panel .timer {
+    float: right;
+    color: yellowgreen;
+}
+
+.score-panel .restart {
+    float: right;
+    color: orange;
+    cursor: pointer;
+}
+
+.score-panel img {
+    float: right;
+    height: 90px;
+    width: 90px;
+}
+
+li {
+    color: rgb(255, 187, 0);
+    font-size: 30px;
+    list-style: none;
+    display: inline-block;
+    text-shadow: 0 5px #999;
+}
+
+
+/*  Modal Congratulations Popup  */
+
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    /* Fallback color */
+    background-color: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content */
+
+.modal-content {
+    border-radius: 13px;
+    background-color: snow;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%;
+    height: 70%;
+    text-align: center;
+    color: black;
+    box-shadow: 0 9px #999;
+}
+
+.modal-content img {
+    width: 20%;
+    height: 20%;
+}
+
+.modal-content h1 {
+    text-shadow: 3px 2px orange;
+    color: black;
+    font-style: oblique;
+}
+
+
+/* Button */
+
+.playAgain {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 30px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: orange;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+.playAgain:hover {
+    background-color: red
+}
+
+.playAgain:active {
+    background-color: red;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
